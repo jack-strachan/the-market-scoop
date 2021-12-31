@@ -1,0 +1,138 @@
+
+.nav-title {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.splash-head {
+    font-size: 64px !important;
+    font-weight: 700 !important;
+}
+
+.big-head {
+    font-size: 56px !important;
+    font-weight: 700 !important;
+}
+
+.big-subhead {
+    font-size: 42px !important;
+    font-weight: 700 !important;
+}
+
+.big-stat {
+    font-size: 38px;
+    font-weight: 500;
+}
+
+.headline {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    line-height: 29px !important;
+}
+
+.title-emphasized {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 20px !important;
+}
+
+.body1 {
+    font-size: 14px !important;
+    line-height: 17px !important;
+}
+
+.body1-medium {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 17px !important;
+}
+
+.body1-emphasized {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 17px !important;
+}
+
+.body2 {
+    font-size: 12px !important;
+    line-height: 15px !important;
+}
+
+.body2-medium {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 15px !important;
+}
+
+.body2-emphasized {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    line-height: 15px !important;
+}
+
+.body2-subheader {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    line-height: 15px !important;
+}
+
+.body3 {
+    font-size: 11px !important;
+    line-height: 13px !important;
+}
+
+.body3-medium {
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    line-height: 13px !important;
+}
+
+.body3-emphasized {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    line-height: 13px !important;
+}
+
+.body3-subheader {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    line-height: 13px !important;
+}
+
+.small-indicator {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0px;
+}
+
+.small-headline {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.large-headline {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.o9 {
+    opacity: .9;
+}
+
+.o8 {
+    opacity: .8;
+}
+
+.o6 {
+    opacity: .6;
+}
+
+.o5 {
+    opacity: .5;
+}

@@ -1,0 +1,173 @@
+:root {
+    --bodyColor: #12141D;
+    --white: #FFFFFF;
+    --aqua-gradient: linear-gradient(to right, #3078F6, #36ABFF)
+}
+
+body {
+    background-color: var(--bodyColor);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+}
+
+.blue-button {
+    border: none;
+    outline: none;
+    background-image: var(--aqua-gradient);
+    padding: var(--space16) var(--space20);
+    border-radius: var(--space16);
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.grey-button {
+    border: none;
+    outline: none;
+    background-color: #FFFFFF09;
+    padding: var(--space16) var(--space20);
+    border-radius: var(--space16);
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: .8
+}
+
+button {
+    transition: 150ms ease;
+    box-shadow: 0 0px 8px #00000020;
+}
+
+button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px #00000020;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    background-color: #FFFFFF03;
+}
+
+.nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    position: relative;
+    padding: 0px 16px;
+    margin: 0px 16px
+}
+
+.nav-border {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 4px 4px 0px 0px;
+    background-image: var(--aqua-gradient);
+    transition: 150ms ease;
+}
+
+.splash-card {
+    background-color: #FFFFFF10;
+    border-radius: var(--space16);
+    padding: var(--space32);
+    margin: var(--space20);
+    box-shadow: 0 0 8px #00000020;
+    transition: 150ms ease;
+}
+
+.splash-card:hover {
+    box-shadow: 0 4px 8px #00000020;
+    transform: translateY(-4px);
+}
+
+.phones {
+    transform: scaleX(-1);
+}
+
+.plan-card {
+    background-color: #FFFFFF10;
+    border-radius: var(--space16);
+    padding: var(--space32);
+    margin: var(--space20);
+    box-shadow: 0 0 8px #00000020;
+    transition: 150ms ease;
+}
+
+.ReactCollapse--collapse {
+    transition: height 300ms;
+}
+
+.answer-collapse {
+    background-color: #FFFFFF10;
+    border-radius: var(--space12);
+    padding: var(--space12) var(--space20);
+    margin: var(--space20) 0;
+    cursor: pointer;
+    transition: var(--transition1);
+}
+
+.answer-collapse:hover {
+    background-color: #FFFFFF15;
+}
+
+.gradient-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: radial-gradient(at 40% 20%, hsla(28, 100%, 74%, 1) 0, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 1) 0, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(355, 85%, 93%, 1) 0, transparent 50%),
+    radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 1) 0, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 1) 0, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 1) 0, transparent 50%),
+    radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 1) 0, transparent 50%);
+    background-size: cover;
+    opacity: .25;
+}
+
+.gradient-bg2 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    opacity: .25;
+    background-image: radial-gradient(at 91% 42%, hsla(351, 73%, 61%, 1) 0, transparent 56%),
+    radial-gradient(at 30% 35%, hsla(33, 78%, 79%, 1) 0, transparent 45%),
+    radial-gradient(at 95% 82%, hsla(30, 89%, 71%, 1) 0, transparent 44%),
+    radial-gradient(at 92% 62%, hsla(359, 71%, 65%, 1) 0, transparent 45%),
+    radial-gradient(at 5% 34%, hsla(172, 91%, 70%, 1) 0, transparent 58%),
+    radial-gradient(at 91% 68%, hsla(243, 74%, 73%, 1) 0, transparent 51%),
+    radial-gradient(at 36% 29%, hsla(187, 75%, 60%, 1) 0, transparent 45%);
+}
