@@ -62,7 +62,13 @@ li {
     justify-content: space-between;
     align-items: center;
     padding: 0 5%;
-    background-color: #FFFFFF03;
+    background-color: #00000020;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+    transition: all 100ms ease;
+    backdrop-filter: blur(4px);
 }
 
 .nav ul {
@@ -79,8 +85,18 @@ li {
     align-items: center;
     height: 80px;
     position: relative;
-    padding: 0px 16px;
-    margin: 0px 16px
+    padding: 0px 32px;
+    background-color: transparent;
+    transition: 150ms ease;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    color: #FFFFFF50
+}
+
+.nav ul li:hover {
+    background-color: #FFFFFF06;
+    border-bottom: 3px solid #FFFFFF50;
+    color: #FFFFFF
 }
 
 .nav-border {
@@ -101,6 +117,9 @@ li {
     margin: var(--space20);
     box-shadow: 0 0 8px #00000020;
     transition: 150ms ease;
+    display: flex;
+    flex-direction: column;
+    flex: 1
 }
 
 .splash-card:hover {
@@ -119,6 +138,23 @@ li {
     margin: var(--space20);
     box-shadow: 0 0 8px #00000020;
     transition: 150ms ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #00000080;
+    z-index: 9999999;
 }
 
 .ReactCollapse--collapse {

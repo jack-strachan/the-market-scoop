@@ -6,6 +6,15 @@ import {Collapse} from "react-collapse/lib/Collapse";
 import AnswerCollapse from "../components/AnswerCollapse";
 import SvgFacebook from "../icons/Facebook";
 import logo from "../images/logo.png";
+import SvgCheck from "../icons/Check";
+import SvgZap from "../icons/Zap";
+import SvgTarget from "../icons/Target";
+import SvgLock from "../icons/Lock";
+import SvgSmile from "../icons/Smile";
+import "animate.css/animate.min.css";
+import ScrollAnimation from 'react-animate-on-scroll';
+import Modal from "../components/Modal";
+import SignUpModal from "../components/Modal";
 
 const NAV_TABS = [
     {
@@ -47,23 +56,23 @@ const SPLASH_STATS = [
 
 const CARDS_1 = [
     {
-        title: 'Catered Alerts',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus imperdiet orci non sem placerat.'
+        title: 'Relevant Tips',
+        description: 'Receive relevant, insightful tips to help guide smarter investments.'
     },
     {
-        title: 'Catered Alerts',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus imperdiet orci non sem placerat.'
+        title: 'Hand Curated',
+        description: "No fluff, all cream. Our team is dedicated to sifting through the junk so you don't have to."
     },
 ]
 
 const CARDS_2 = [
     {
-        title: 'Catered Alerts',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus imperdiet orci non sem placerat.'
+        title: 'Member Access',
+        description: 'Get exclusive access to the community group chats, open to members 24/7.'
     },
     {
-        title: 'Catered Alerts',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus imperdiet orci non sem placerat.'
+        title: 'Money Back Guarantee',
+        description: "Don't enjoy the service? Get 7 days to try it out."
     },
 ]
 
@@ -78,11 +87,11 @@ const PLANS = [
                 unlocked: true
             },
             {
-                title: 'Weekly recap with top anticipated news on the US Stock Market (upgrades, downgrades, earnings, mergers, announcements and more)',
+                title: 'Weekly recap message with top anticipated news on the US Stock Market (upgrades, downgrades, earnings, mergers, announcements and more)',
                 unlocked: true
             },
             {
-                title: 'Weekly recap with key information on the Crypto-Currency market',
+                title: 'Weekly recap message with key information on the Crypto-Currency market',
                 unlocked: true
             },
         ]
@@ -93,23 +102,23 @@ const PLANS = [
         term: '/mo',
         features: [
             {
+                title: 'Daily message with crucial news on the US Stock Market and Crypto Market',
+                unlocked: true
+            },
+            {
                 title: 'Access to the Market Scoop group chat',
                 unlocked: true
             },
             {
-                title: 'Weekly recap with top anticipated news on the US Stock Market (upgrades, downgrades, earnings, mergers, announcements and more)',
+                title: 'Weekly recap message with top anticipated news on the US Stock Market (upgrades, downgrades, earnings, mergers, announcements and more)',
                 unlocked: true
             },
             {
-                title: 'Weekly recap with key information on the Crypto-Currency market',
+                title: 'Weekly recap message with key information on the Crypto-Currency market',
                 unlocked: true
             },
             {
                 title: 'Access to members only group chat channels',
-                unlocked: true
-            },
-            {
-                title: 'Daily message with crucial news on the US Stock Market and Crypto Market',
                 unlocked: true
             },
             {
@@ -170,7 +179,9 @@ class Splash extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            activeTab: 'home'
+            activeTab: 'home',
+            scrollPosition: 0,
+            modalOpen:false
         }
         this.topRef = React.createRef();
         this.aboutRef = React.createRef();
@@ -197,13 +208,30 @@ class Splash extends Component {
         }
     }
 
+    componentDidMount() {
+        window.addEventListener('scroll', this.listenToScroll)
+    }
+
+    listenToScroll = () => {
+        const winScroll =
+            document.body.scrollTop || document.documentElement.scrollTop
+        const aboutRef = this.aboutRef.current.offsetTop + window.innerHeight
+        const plansRef = this.plansRef.current.offsetTop + window.innerHeight
+        const faqRef = this.faqRef.current.offsetTop + window.innerHeight
+        this.setState({
+            scrollPosition: winScroll,
+            activeTab: winScroll < 100 ? 'home' : winScroll < aboutRef ? 'about' : winScroll < plansRef ? 'plans' : 'faq'
+        })
+    }
+
     render() {
         return (
             <div style={{height: '300vh'}}>
-                <Navbar scrollTo={this.scrollTo} activeTab={this.state.activeTab} tabs={NAV_TABS}/>
+                <Navbar scrollTo={this.scrollTo} activeTab={this.state.activeTab} tabs={NAV_TABS}
+                        scrollPosition={this.state.scrollPosition}/>
                 <div className='relative' ref={this.topRef}>
                     <div className='gradient-bg2'/>
-                    <section className='col-ac-jc text-center' style={{padding: '5% 25% 0% 25%'}}>
+                    <section className='col-ac-jc text-center' style={{padding: '10% 25% 0% 25%'}}>
                         <h1 className='splash-head mb-16'>
                             Tagline about the Market Scoop goes here
                         </h1>
@@ -213,38 +241,40 @@ class Splash extends Component {
                             commodo. Nam dui libero, molestie tempus ligula non, consectetur malesuada magna.
                         </p>
                         <div className='row-ac-jc mt-20'>
-                            <button className='mr-16 blue-button'>
+                            <button onClick={() => this.scrollTo('plans')} className='mr-16 blue-button'>
                                 View Plans
                             </button>
-                            <button className='ml-16 grey-button'>
+                            <button onClick={() => this.scrollTo('plans')} className='ml-16 grey-button'>
                                 Start Free
                             </button>
                         </div>
                     </section>
                     <section className='row-ac-jb'>
-                        <div style={{paddingLeft: '10%'}}>
-                            <h2 className='big-head mb-0'>
-                                Stay on top of the market
-                            </h2>
-                            <p className='o5 mt-16 mb-20'>
-                                The #1 way to ensure you are an informed investor, keeping up to date with all the
-                                latest news including earnings results on the largest publicly traded companies, new
-                                product and service launches, analyst upgrades, and management transitions.
-                            </p>
-                            <div className='row-ac mt-16'>
-                                {SPLASH_STATS.map((stat, i) =>
-                                    <div className='mr-28'>
-                                        <div className='big-stat mb-8'
-                                             style={{color: i === 0 ? '#FFBE3D' : i === 1 ? '#367DFF' : i === 2 && '#43F58B'}}>
-                                            {stat.top}
+                        <ScrollAnimation animateIn="fadeInUp" delay={150}>
+                            <div style={{paddingLeft: '30%'}}>
+                                <h2 className='big-head mb-0'>
+                                    Stay on top of the market
+                                </h2>
+                                <p className='o5 mt-16 mb-20'>
+                                    The #1 way to ensure you are an informed investor, keeping up to date with all the
+                                    latest news including earnings results on the largest publicly traded companies, new
+                                    product and service launches, analyst upgrades, and management transitions.
+                                </p>
+                                <div className='row-ac mt-16'>
+                                    {SPLASH_STATS.map((stat, i) =>
+                                        <div className='mr-28'>
+                                            <div className='big-stat mb-8'
+                                                 style={{color: i === 0 ? '#FFBE3D' : i === 1 ? '#367DFF' : i === 2 && '#43F58B'}}>
+                                                {stat.top}
+                                            </div>
+                                            <div>
+                                                {stat.bottom}
+                                            </div>
                                         </div>
-                                        <div>
-                                            {stat.bottom}
-                                        </div>
-                                    </div>
-                                )}
+                                    )}
+                                </div>
                             </div>
-                        </div>
+                        </ScrollAnimation>
                         <img src={phones} className='phones'/>
                     </section>
                 </div>
@@ -256,7 +286,8 @@ class Splash extends Component {
                         </h2>
                         <p className='o5 mt-16 mb-32'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet orci non sem
-                            placerat commodo. Nam dui libero, molestie tempus ligula non, consectetur malesuada magna.
+                            placerat commodo. Nam dui libero, molestie tempus ligula non, consectetur malesuada
+                            magna.
                         </p>
                         <button className='mr-16 blue-button'>
                             Get Started
@@ -265,27 +296,44 @@ class Splash extends Component {
                     <div>
                         <div className='row-ac'>
                             {CARDS_1.map((card, i) =>
-                                <div className='splash-card'>
-
-                                    <div className='headline mb-8'>
-                                        {card.title}
+                                <ScrollAnimation animateIn="fadeInUp" delay={i === 0 ? 50 : 100} style={{flex: 1}}>
+                                    <div className='splash-card'>
+                                        {i === 0 ?
+                                            <SvgZap height={80} width={80} className='mb-20'
+                                                    style={{color: '#2DCA8C'}}/>
+                                            :
+                                            <SvgTarget height={80} width={80} className='mb-20'
+                                                       style={{color: '#FFBE3D'}}/>
+                                        }
+                                        <div className='headline mb-8'>
+                                            {card.title}
+                                        </div>
+                                        <div className='o5'>
+                                            {card.description}
+                                        </div>
                                     </div>
-                                    <div className='o5'>
-                                        {card.description}
-                                    </div>
-                                </div>
+                                </ScrollAnimation>
                             )}
                         </div>
                         <div className='row-ac'>
                             {CARDS_2.map((card, i) =>
-                                <div className='splash-card'>
-                                    <div className='headline mb-8'>
-                                        {card.title}
+                                <ScrollAnimation animateIn="fadeInUp" delay={i === 0 ? 150 : 200} style={{flex: 1}}>
+                                    <div className='splash-card'>
+                                        {i === 0 ?
+                                            <SvgLock height={80} width={80} className='mb-20'
+                                                     style={{color: '#F54379'}}/>
+                                            :
+                                            <SvgSmile height={80} width={80} className='mb-20'
+                                                      style={{color: '#367DFF'}}/>
+                                        }
+                                        <div className='headline mb-8'>
+                                            {card.title}
+                                        </div>
+                                        <div className='o5'>
+                                            {card.description}
+                                        </div>
                                     </div>
-                                    <div className='o5'>
-                                        {card.description}
-                                    </div>
-                                </div>
+                                </ScrollAnimation>
                             )}
                         </div>
                     </div>
@@ -294,36 +342,50 @@ class Splash extends Component {
                     <div className='gradient-bg'/>
                     <div className='text-center'>
                         <h1 className='big-head mb-0'>
-                            Our Packages
+                            Pick the plan thats best for you
                         </h1>
                         <p className='o5 mb-64'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet.
+                            Upgrade, downgrade, or cancel at any time. All you need is a phone number to get started.
                         </p>
                     </div>
-                    <div className='row-ac'>
+                    <div className='row-plain'>
                         {PLANS.map((plan, i) =>
-                            <div className='plan-card'>
-                                <p className='headline mt-0 mb-12'>
-                                    {plan.title}
-                                </p>
-                                <p className='big-head mt-0 mb-20'>
-                                    {plan.price}<span className='o5 big-subhead'>{plan.term}</span>
-                                </p>
-                                <div>
-                                    <ul>
-                                        {plan.features.map(feature =>
-                                            <li className='row-ac'>
-                                                <div style={{minWidth: 16}}>
-                                                    <SvgTwitter color={!feature.unlocked && 'grey'}/>
-                                                </div>
-                                                <p className='ml-16'>
-                                                    {feature.title}
-                                                </p>
-                                            </li>
-                                        )}
-                                    </ul>
+                            <ScrollAnimation animateIn="fadeInUp" delay={i === 0 ? 0 : 50}
+                                             style={{flex: 1, display: 'flex'}}>
+                                <div className='plan-card'>
+                                    <div>
+                                        <p className='headline mt-0 mb-12'>
+                                            {plan.title}
+                                        </p>
+                                        <p className='big-head mt-0 mb-20'>
+                                            {plan.price}<span className='o5 big-subhead'>{plan.term}</span>
+                                        </p>
+                                        <div>
+                                            <ul>
+                                                {plan.features.map(feature =>
+                                                    <li className='row-plain mb-8'>
+                                                        <div style={{minWidth: 16, flex: 1}}>
+                                                            <SvgCheck fill={!feature.unlocked && 'grey'}/>
+                                                        </div>
+                                                        <div style={{flex: 20}}>
+                                                            <p className='ml-16 mt-4'>
+                                                                {feature.title}
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                )}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div className='mt-32'>
+                                        <button
+                                            onClick={() => this.setState({modalOpen:true})}
+                                            className={plan.title === 'Basic' ? 'grey-button' : 'blue-button'}>
+                                            {plan.title === 'Basic' ? 'Join Basic' : 'Become a Member'}
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
+                            </ScrollAnimation>
                         )}
                     </div>
                 </section>
@@ -340,15 +402,18 @@ class Splash extends Component {
                 <section ref={this.faqRef} className='col-ac-jc' style={{padding: '10% 15% 10% 15%'}}>
                     <div className='text-center'>
                         <h1 className='big-head mb-0'>
-                            Frequently Asked Questions
+                            FAQs
                         </h1>
                         <p className='o5 mb-64'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet.
+                            Dont see your answer here? Contact us at _______ with any other questions! We're more than
+                            happy to help.
                         </p>
                     </div>
                     <ul>
-                        {FAQ.map(pair =>
-                            <AnswerCollapse key={pair.a} q={pair.q} a={pair.a}/>
+                        {FAQ.map((pair, i) =>
+                            <ScrollAnimation animateIn="fadeInUp" delay={i * 50}>
+                                <AnswerCollapse key={pair.a} q={pair.q} a={pair.a}/>
+                            </ScrollAnimation>
                         )}
                     </ul>
                 </section>
@@ -357,8 +422,8 @@ class Splash extends Component {
                         <div className='row-jb'>
                             <div style={{maxWidth: 300}}>
                                 <img src={logo} style={{height: 45}}/>
-                                <div className='row-ac'>
-                                    <SvgTwitter/>
+                                <div className='row-ac mt-16'>
+                                    <SvgTwitter className='mr-12'/>
                                     <SvgFacebook/>
                                 </div>
                                 <p style={{fontSize: 12}} className='mt-32'>© The Market Scoop 2022</p>
@@ -409,6 +474,10 @@ class Splash extends Component {
                         </p>
                     </div>
                 </section>
+                <SignUpModal
+                    toggle={() => this.setState({modalOpen:!this.state.modalOpen})}
+                    isOpen={this.state.modalOpen}
+                />
             </div>
         )
     }
