@@ -119,7 +119,8 @@ li {
     transition: 150ms ease;
     display: flex;
     flex-direction: column;
-    flex: 1
+    flex: 1;
+    min-height: 250px;
 }
 
 .splash-card:hover {
@@ -206,4 +207,24 @@ li {
     radial-gradient(at 5% 34%, hsla(172, 91%, 70%, 1) 0, transparent 58%),
     radial-gradient(at 91% 68%, hsla(243, 74%, 73%, 1) 0, transparent 51%),
     radial-gradient(at 36% 29%, hsla(187, 75%, 60%, 1) 0, transparent 45%);
+}
+
+.testimonial-card {
+    border-radius: var(--space12);
+    background-color: #FFFFFF08;
+    margin:6px 40px 0 40px;
+    padding:20px;
+    border:1px solid #ffffff10;
+    transition: 100ms ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-2px);
+    border:1px solid hsla(243, 74%, 73%, 1);
+}
+
+.title-underline {
+    height:6px;
+    width:70%;
+    background: var(--aqua-gradient);
 }
