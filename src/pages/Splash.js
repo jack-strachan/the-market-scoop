@@ -12,70 +12,73 @@ import SvgTarget from "../icons/Target";
 import SvgLock from "../icons/Lock";
 import SvgSmile from "../icons/Smile";
 import "animate.css/animate.min.css";
-import ScrollAnimation from 'react-animate-on-scroll';
+import ScrollAnimation from "react-animate-on-scroll";
 import Modal from "../components/Modal";
 import SignUpModal from "../components/Modal";
 import Marquee from "react-fast-marquee";
 
 const NAV_TABS = [
     {
-        tab: 'Home',
-        route: 'home'
+        tab: "Home",
+        route: "home",
     },
     {
-        tab: 'About',
-        route: 'about'
+        tab: "About",
+        route: "about",
     },
     {
-        tab: 'Plans',
-        route: 'plans'
+        tab: "Plans",
+        route: "plans",
     },
     {
-        tab: 'Testimonials',
-        route: 'testimonials'
+        tab: "Testimonials",
+        route: "testimonials",
     },
     {
-        tab: 'FAQ',
-        route: 'faq'
+        tab: "FAQ",
+        route: "faq",
     },
-]
+];
 
 const SPLASH_STATS = [
     {
-        top: '8.6k+',
-        bottom: 'Messages Sent'
+        top: "8.6k+",
+        bottom: "Messages Sent",
     },
     {
-        top: '3.4k+',
-        bottom: 'Members'
+        top: "3.4k+",
+        bottom: "Members",
     },
     {
-        top: '1.2k',
-        bottom: '5 Star Reviews'
+        top: "1.2k",
+        bottom: "5 Star Reviews",
     },
-]
+];
 
 const CARDS_1 = [
     {
-        title: 'Relevant Tips',
-        description: 'Receive relevant, insightful tips to help guide smarter investments.'
+        title: "Relevant Tips",
+        description:
+            "Receive relevant, insightful tips to help guide smarter investments.",
     },
     {
-        title: 'Hand Curated',
-        description: "No fluff, all cream. Our team is dedicated to sifting through the junk so you don't have to."
+        title: "Hand Curated",
+        description:
+            "No fluff, all cream. Our team is dedicated to sifting through the junk so you don't have to.",
     },
-]
+];
 
 const CARDS_2 = [
     {
-        title: 'Member Access',
-        description: 'Get exclusive access to the community group chats, open to members 24/7.'
+        title: "Member Access",
+        description:
+            "Get exclusive access to the community group chats, open to members 24/7.",
     },
     {
-        title: 'Money Back Guarantee',
-        description: "Don't enjoy the service? Get 7 days to try it out."
+        title: "Money Back Guarantee",
+        description: "Don't enjoy the service? Get 7 days to try it out.",
     },
-]
+];
 
 const CARDS = [
     {
@@ -135,30 +138,6 @@ const PLANS = [
         price: '$4.99',
         term: '/mo',
         features: [
-            // {
-            //     title: 'Daily message with crucial news on the US Stock Market and Crypto Market',
-            //     unlocked: true
-            // },
-            // {
-            //     title: 'Access to the Market Scoop group chat',
-            //     unlocked: true
-            // },
-            // {
-            //     title: 'Weekly recap message with top anticipated news on the US Stock Market (upgrades, downgrades, earnings, mergers, announcements and more)',
-            //     unlocked: true
-            // },
-            // {
-            //     title: 'Weekly recap message with key information on the Crypto-Currency market',
-            //     unlocked: true
-            // },
-            // {
-            //     title: 'Access to members only group chat channels',
-            //     unlocked: true
-            // },
-            // {
-            //     title: 'Catered messaging customized to your needs',
-            //     unlocked: true
-            // },
             {
                 title: 'One message per day',
                 unlocked: true
@@ -172,95 +151,81 @@ const PLANS = [
                 unlocked: true
             },
         ]
-    },
-    // {
-    //     title: 'Premium',
-    //     price: '$199',
-    //     term: '/mo',
-    //     features: [
-    //         {
-    //             title: 'Daily messages to any number',
-    //             unlocked: true
-    //         },
-    //         {
-    //             title: 'Catered services customized to your needs',
-    //             unlocked: true
-    //         },
-    //         {
-    //             title: '24/7 contact available',
-    //             unlocked: true
-    //         },
-    //         {
-    //             title: 'Switch numbers as many times as you like',
-    //             unlocked: true
-    //         },
-    //         {
-    //             title: 'Unlock referral rewards',
-    //             unlocked: true
-    //         },
-    //     ]
-    // }
+    }
 ]
 
 const FAQ = [
     {
-        q: 'How long till I start receiving messages after I sign up?',
-        a: 'You will start receiving messages the next trading day.'
+        q: "How long till I start receiving messages after I sign up?",
+        a: "You will start receiving messages the next trading day.",
     },
     {
-        q: 'How can I upgrade from my free plan?',
-        a: 'Upgrading is easy! Just come back to this site and sign up for the paid plan. Your old number will be migrated upon signup.'
+        q: "How can I upgrade from my free plan?",
+        a: "Upgrading is easy! Just come back to this site and sign up for the paid plan. Your old number will be migrated upon signup.",
     },
     {
-        q: 'Do I still need to do my own research?',
-        a: 'Of course! This service aims to keep members informed with important news and key insights. Its never a good idea to trade blindly without doing the necessary research.'
+        q: "Do I still need to do my own research?",
+        a: "Of course! This service aims to keep members informed with important news and key insights. Its never a good idea to trade blindly without doing the necessary research.",
     },
     {
-        q: 'Where can I access the members chat?',
-        a: 'Find us here ___.'
+        q: "Where can I access the members chat?",
+        a: "Find us here ___.",
     },
-]
+];
 
 const TESTIMONIALS = [
     {
         review: '"It makes for great conversation at work. I always have something to talk about with co-workers after getting the message."',
-        user: 'Tony D.'
+        user: 'Tony D.',
+        location: 'Oakland, CA',
+        border: 'linear-gradient(to left, #4CD8CF80, #39D06C80)'
     },
     {
         review: '"I am the most informed friend in my group. I am always the one to break the news on big moves thanks to the market scoop."',
-        user: 'John S.'
+        user: 'John S.',
+        location: 'Chicago, IL',
+        border: 'linear-gradient(to left, #B31A3280, #FD3D4280)'
     },
     {
         review: '"Out of all my monthly charges, I don’t feel bad about my $5 to the market scoop. I would even pay more for this service."',
-        user: 'Derek V.'
+        user: 'Derek V.',
+        location: 'Paris, France',
+        border: 'linear-gradient(to left, #F25E2280, #FEB00080)'
     },
     {
         review: '"I am subscribed to some email watchlists and what not, but I just don’t find myself reading. Something about ‘one text message a day’ makes me swipe on the notification and read it. It’s so simple yet effective."',
-        user: 'Sarah P.'
+        user: 'Sarah P.',
+        location: 'Houston, TX',
+        border: 'linear-gradient(to left, #2FEA9B80, #7FDD5380)'
     },
     {
         review: '"While I know this doesn’t give financial advice, I have actually taken trades because of this. You usually hear about those big runners midway or towards the end of the day, but I’ve caught a couple in the morning because of this service. Thanks."',
-        user: 'Zack K.'
+        user: 'Zack K.',
+        location: 'Sacramento, CA',
+        border: 'linear-gradient(to left, #38A6EC80, #2BF3E380)'
     },
     {
         review: '"So simple yet so effective, thank you! I am a stay at home wife who has shown some interest in the market since the pandemic, my husband is so impressed when IM the one telling HIM about some of the stuff I read here in the morning! Thank you."',
-        user: 'Amy R.'
+        user: 'San Francisco, CA',
+        border: 'linear-gradient(to left, #F25E2280, #FEB00080)'
     },
     {
         review: '"I signed up for the free version, and after getting my second message, I realized I wanted these daily. It’s a nice change that focuses more on individual company alerts which is what I like."',
-        user: 'Ted G.'
+        user: 'Miami, FL',
+        border: 'linear-gradient(to left, #E661C980, #FB927F80)'
     },
 ]
 
 
 class Splash extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            activeTab: 'home',
+            activeTab: "home",
             scrollPosition: 0,
-            modalOpen: false
-        }
+            modalOpen: false,
+            isPaidModal: true,
+        };
         this.topRef = React.createRef();
         this.aboutRef = React.createRef();
         this.plansRef = React.createRef();
@@ -269,38 +234,45 @@ class Splash extends Component {
     }
 
     scrollTo = (route) => {
-        if (route === 'top') {
-            this.topRef.current.scrollIntoView({behavior: 'smooth'})
+        if (route === "top") {
+            this.topRef.current.scrollIntoView({behavior: "smooth"});
         }
-        if (route === 'about') {
-            this.aboutRef.current.scrollIntoView({behavior: 'smooth'})
+        if (route === "about") {
+            this.aboutRef.current.scrollIntoView({behavior: "smooth"});
         }
-        if (route === 'plans') {
-            this.plansRef.current.scrollIntoView({behavior: 'smooth'})
+        if (route === "plans") {
+            this.plansRef.current.scrollIntoView({behavior: "smooth"});
         }
-        if (route === 'testimonials') {
-            this.testimonialsRef.current.scrollIntoView({behavior: 'smooth'})
+        if (route === "testimonials") {
+            this.testimonialsRef.current.scrollIntoView({behavior: "smooth"});
         }
-        if (route === 'faq') {
-            this.faqRef.current.scrollIntoView({behavior: 'smooth'})
+        if (route === "faq") {
+            this.faqRef.current.scrollIntoView({behavior: "smooth"});
         }
-    }
+    };
 
     componentDidMount() {
-        window.addEventListener('scroll', this.listenToScroll)
+        window.addEventListener("scroll", this.listenToScroll);
     }
 
     listenToScroll = () => {
         const winScroll =
-            document.body.scrollTop || document.documentElement.scrollTop
-        const aboutRef = this.aboutRef.current.offsetTop + window.innerHeight
-        const plansRef = this.plansRef.current.offsetTop + window.innerHeight
-        const faqRef = this.faqRef.current.offsetTop + window.innerHeight
+            document.body.scrollTop || document.documentElement.scrollTop;
+        const aboutRef = this.aboutRef.current.offsetTop + window.innerHeight;
+        const plansRef = this.plansRef.current.offsetTop + window.innerHeight;
+        const faqRef = this.faqRef.current.offsetTop + window.innerHeight;
         this.setState({
             scrollPosition: winScroll,
-            activeTab: winScroll < 100 ? 'home' : winScroll < aboutRef ? 'about' : winScroll < plansRef ? 'plans' : 'faq'
-        })
-    }
+            activeTab:
+                winScroll < 100
+                    ? "home"
+                    : winScroll < aboutRef
+                    ? "about"
+                    : winScroll < plansRef
+                        ? "plans"
+                        : "faq",
+        });
+    };
 
     render() {
         return (
@@ -309,14 +281,14 @@ class Splash extends Component {
                         scrollPosition={this.state.scrollPosition}/>
                 <div className='relative' ref={this.topRef}>
                     <div className='gradient-bg2'/>
-                    <section className='col-ac-jc text-center' style={{padding: '10% 25% 0% 25%'}}>
-                        <h1 className='splash-head mb-16'>
-                            One Message A Day.
+                    <section className='col-jc' style={{padding: '10% 25% 0% 12%'}}>
+                        <h1 className='splash-head mb-8'>
+                            One Message,<br/> Per Day.
                         </h1>
-                        <p className='o5 '>
-                            Keeping you up to date on the biggest market moves.
-                        </p>
-                        <div className='row-ac-jc mt-20'>
+                        {/*<p className='o5 title mt-0'>*/}
+                        {/*    Keeping you up to date on the biggest market moves.*/}
+                        {/*</p>*/}
+                        <div className='row-ac mt-12'>
                             <button onClick={() => this.scrollTo('plans')} className='mr-16 blue-button'>
                                 View Plans
                             </button>
@@ -474,29 +446,33 @@ class Splash extends Component {
                         </div>
                         <Marquee gradientColor={[18, 20, 29]} pauseOnHover>
                             {TESTIMONIALS.map(testimonial =>
-                                <div className='testimonial-card'>
-                                    <div style={{minHeight: 100}}>
-                                        <p className='o9' style={{
-                                            maxWidth: 400,
-                                            marginHorizontal: 120,
-                                            paddingHorizontal: 100
-                                        }}>{testimonial.review}</p>
+                                <div className='testimonial-card' style={{background: testimonial.border, padding: 1}}>
+                                    <div className='testimonial-card-inner'>
+                                        <div style={{minHeight: 100}}>
+                                            <p className='o9' style={{
+                                                maxWidth: 400,
+                                                marginHorizontal: 120,
+                                                paddingHorizontal: 100
+                                            }}>{testimonial.review}</p>
+                                        </div>
+                                        <p className='o5 body2-medium'>{testimonial.user}</p>
                                     </div>
-                                    <p className='o5 body2-medium'>{testimonial.user}</p>
                                 </div>
                             )}
                         </Marquee>
-                        <Marquee gradientColor={[18, 20, 29]} pauseOnHover direction={'right'}>
+                        <Marquee gradientColor={[18, 20, 29]} pauseOnHover direction={'right'} style={{marginTop: 40}}>
                             {TESTIMONIALS.map(testimonial =>
-                                <div className='testimonial-card mt-32'>
-                                    <div style={{minHeight: 100}}>
-                                        <p className='o9' style={{
-                                            maxWidth: 400,
-                                            marginHorizontal: 120,
-                                            paddingHorizontal: 100
-                                        }}>{testimonial.review}</p>
+                                <div className='testimonial-card' style={{background: testimonial.border, padding: 1}}>
+                                    <div className='testimonial-card-inner'>
+                                        <div style={{minHeight: 100}}>
+                                            <p className='o9' style={{
+                                                maxWidth: 400,
+                                                marginHorizontal: 120,
+                                                paddingHorizontal: 100
+                                            }}>{testimonial.review}</p>
+                                        </div>
+                                        <p className='o5 body2-medium'>{testimonial.user}</p>
                                     </div>
-                                    <p className='o5 body2-medium'>{testimonial.user}</p>
                                 </div>
                             )}
                         </Marquee>
@@ -579,6 +555,7 @@ class Splash extends Component {
                 </section>
                 <SignUpModal
                     toggle={() => this.setState({modalOpen: !this.state.modalOpen})}
+                    isPaidModal={this.state.isPaidModal}
                     isOpen={this.state.modalOpen}
                 />
             </div>
@@ -586,4 +563,4 @@ class Splash extends Component {
     }
 }
 
-export default Splash
+export default Splash;

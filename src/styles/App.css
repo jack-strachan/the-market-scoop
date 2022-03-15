@@ -8,11 +8,10 @@ body {
     background-color: var(--bodyColor);
     color: var(--white);
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
 
 .blue-button {
-    border: none;
-    outline: none;
     background-image: var(--aqua-gradient);
     padding: var(--space16) var(--space20);
     border-radius: var(--space16);
@@ -20,6 +19,9 @@ body {
     font-size: 20px;
     font-weight: 600;
     cursor: pointer;
+    transition: 150ms ease;
+    box-shadow: 0 0px 8px #00000020;
+    opacity: .99
 }
 
 .grey-button {
@@ -35,13 +37,18 @@ body {
     opacity: .8
 }
 
+.blue-button:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 4px 8px #00000020;
+}
+
 button {
     transition: 150ms ease;
     box-shadow: 0 0px 8px #00000020;
 }
 
 button:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px) !important;
     box-shadow: 0 4px 8px #00000020;
 }
 
@@ -158,6 +165,22 @@ li {
     z-index: 9999999;
 }
 
+.Modal {
+    width: 30% !important
+}
+
+.modal-body {
+    padding: 2px;
+    border-radius: var(--space12);
+    background: var(--aqua-gradient);
+}
+
+.modal-body-inner {
+    border-radius: var(--space12);
+    padding: var(--space32);
+    background: var(--bodyColor);
+}
+
 .ReactCollapse--collapse {
     transition: height 300ms;
 }
@@ -209,22 +232,41 @@ li {
     radial-gradient(at 36% 29%, hsla(187, 75%, 60%, 1) 0, transparent 45%);
 }
 
+
 .testimonial-card {
     border-radius: var(--space12);
     background-color: #FFFFFF08;
-    margin:6px 40px 0 40px;
-    padding:20px;
-    border:1px solid #ffffff10;
+    margin: 6px 40px 0 40px;
+    border: 1px solid transparent;
     transition: 100ms ease;
+}
+
+.testimonial-card-inner {
+    padding: 20px;
+    background-color: #191b24;
+    border-radius: var(--space12);
 }
 
 .testimonial-card:hover {
     transform: translateY(-2px);
-    border:1px solid hsla(243, 74%, 73%, 1);
+    /*border: 1px solid hsla(243, 74%, 73%, 1);*/
 }
 
 .title-underline {
-    height:6px;
-    width:70%;
+    height: 6px;
+    width: 70%;
     background: var(--aqua-gradient);
+}
+
+.sr-input {
+    background: black !important;
+    border: 1px solid #36ABFF !important;
+    margin-bottom: var(--space12);
+    border-radius: var(--space4) !important;
+    color: white !important;
+    font-size: 16px !important;
+}
+
+.sr-input::placeholder {
+    color: #FFFFFFC0 !important
 }
