@@ -15,7 +15,7 @@ class SignUpModal extends Component {
                 onRequestClose={this.props.toggleMuffinModal}
                 // style={customStyles}
                 contentLabel="Example Modal"
-                className="Modal"
+                className={this.props.mobile ? 'Mobile-Modal': "Modal"}
                 overlayClassName="Overlay"
             >
                 <motion.div

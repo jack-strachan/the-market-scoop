@@ -9,7 +9,7 @@ class AnswerCollapse extends Component {
     render() {
         return (
             <div className='answer-collapse w-100' style={{border: this.props.last && 'none'}}>
-                <div className='row-ac-jb' onClick={() => this.setState({isOpened: !this.state.isOpened})}>
+                <div className='row-ac-jb' style={{fontSize:this.props.mobile && 14}} onClick={() => this.setState({isOpened: !this.state.isOpened})}>
                     <h3><span className='yellow'>Q:</span> {this.props.q}</h3>
                 </div>
                 <div className='answerslist'>

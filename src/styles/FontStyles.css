@@ -5,17 +5,17 @@
 }
 
 .splash-head {
-    font-size: 84px !important;
+    font-size: 84px;
     font-weight: 700 !important;
 }
 
 .big-head {
-    font-size: 56px !important;
+    font-size: 56px;
     font-weight: 700 !important;
 }
 
 .big-subhead {
-    font-size: 42px !important;
+    font-size: 42px;
     font-weight: 700 !important;
 }
 
@@ -25,9 +25,11 @@
 }
 
 .headline {
-    font-size: 24px !important;
+    font-size: 24px;
     font-weight: 700 !important;
-    line-height: 29px !important;
+}
+.flex-wrap {
+    flex-wrap: wrap;
 }
 
 .title-emphasized {
