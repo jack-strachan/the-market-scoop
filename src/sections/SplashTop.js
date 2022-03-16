@@ -11,7 +11,7 @@ class SplashTop extends Component {
                 <div className='gradient-bg2'/>
                 <section className={this.props.mobile ? 'col-ac-jc' : 'col-jc'}
                          style={{padding: this.props.mobile ? '20% 12% 20% 12%' : '10% 25% 0% 12%'}}>
-                    <h1 className='splash-head mb-8 font-1'
+                    <h1 className='splash-head mb-8'
                         style={{
                             fontSize: this.props.mobile && 42,
                             marginTop: this.props.mobile && 140,

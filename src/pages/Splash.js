@@ -23,6 +23,8 @@ import Testimonials from "../sections/Testimonials";
 import FAQ from "../sections/FAQ";
 import Footer from "../sections/Footer";
 import {NAV_TABS} from "../consts/consts";
+import NavbarMobile from "../components/NavbarMobile";
+import NavMenuMobile from "../components/NavMenuMobile";
 
 class Splash extends Component {
     constructor(props) {
@@ -96,8 +98,22 @@ class Splash extends Component {
     render() {
         return (
             <div>
-                <Navbar scrollTo={this.scrollTo} activeTab={this.state.activeTab} tabs={NAV_TABS}
-                        scrollPosition={this.state.scrollPosition}/>
+                {this.state.mobile ?
+                    <div className='relative'>
+                        <NavMenuMobile
+                            onClickClose={() => this.setState({mobileMenu: false})}
+                            scrollTo={this.scrollTo}
+                            mobileMenu={this.state.mobileMenu}
+                        />
+                        <NavbarMobile
+                            onClickLogo={() => this.scrollTo('top')}
+                            onClickMenu={() => this.setState({mobileMenu: true})}
+                        />
+                    </div>
+                    :
+                    <Navbar scrollTo={this.scrollTo} activeTab={this.state.activeTab} tabs={NAV_TABS}
+                            scrollPosition={this.state.scrollPosition}/>
+                }
                 <div ref={this.topRef}>
                     <SplashTop
                         scrollToPlans={() => this.scrollTo('plans')}
@@ -130,6 +146,7 @@ class Splash extends Component {
             </div>
         )
     }
+
 }
 
 export default Splash;
