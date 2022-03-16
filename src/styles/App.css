@@ -52,6 +52,10 @@ button:hover {
     box-shadow: 0 4px 8px #00000020;
 }
 
+.font-1 {
+    /*font-family: 'Fredoka', sans-serif;*/
+}
+
 .blue-button-mobile {
     background-image: var(--aqua-gradient);
     padding: var(--space12) var(--space16);

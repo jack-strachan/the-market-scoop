@@ -83,7 +83,7 @@ class Plans extends Component {
                                                             <SvgCheck fill={!feature.unlocked && 'grey'}/>
                                                         </div>
                                                         <div style={{flex: 20}}>
-                                                            <p className='ml-16 mt-4'
+                                                            <p className='ml-20 mt-4'
                                                                style={{fontSize: this.props.mobile && 14}}>
                                                                 {feature.title}
                                                             </p>
