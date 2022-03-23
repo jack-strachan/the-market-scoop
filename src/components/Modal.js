@@ -21,12 +21,23 @@ class SignUpModal extends Component {
           initial={{ opacity: 0, transform: "scale(1) translateY(-100%)" }}
           animate={{ opacity: 1, transform: "scale(1) translateY(-0%)" }}
           className="modal-body relative"
-          style={{ height: 300, width: 400, backgroundColor: "black" }}
+          style={{
+            height: 450,
+            width: 400,
+            backgroundColor: "#2a2a2a",
+            boxShadow: "1px 3px 1px #9E9E9E",
+            borderRadius: 20,
+          }}
         >
           <div>
-            <div>
-              <h3 onClick={this.props.toggle}>X</h3>
-              <Pay isPaidModal={this.props.isPaidModal} />
+            <div style={{ padding: 20, borderRadius: 10 }}>
+              <h3 onClick={this.props.toggle} style={{ cursor: "pointer" }}>
+                X
+              </h3>
+              <Pay
+                isPaidModal={this.props.isPaidModal}
+                isCancel={this.props.isCancel}
+              />
             </div>
           </div>
         </motion.div>

@@ -8,10 +8,13 @@ export default function CheckoutForm(props) {
   console.log("props:", props);
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
+  const [promoCode, setPromoCode] = useState("");
   const [error, setError] = useState(null);
   const [metadata, setMetadata] = useState(null);
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState(false);
+  const [messageType, setMessageType] = useState("text");
+  const [email, setEmail] = useState("");
   const stripe = useStripe();
   const elements = useElements();
 
@@ -40,14 +43,30 @@ export default function CheckoutForm(props) {
     ev.preventDefault();
     setProcessing(true);
 
-    if (!name || !phone) {
-      setError(`Fill all fields!`);
-      setProcessing(false);
-      return;
-    }
+    // if (!phone || !email) {
+    //   setError(`Fill all fields!`);
+    //   setProcessing(false);
+    //   return;
+    // }
     // Step 3: Use clientSecret from PaymentIntent and the CardElement
     // to confirm payment with stripe.confirmCardPayment()
     // console.log(ev);
+    if (props.isCancel) {
+      axios
+        .post("https://themarketscoop.herokuapp.com/cancel", {
+          name,
+        })
+        .then((response) => {
+          setError(null);
+          setSucceeded(true);
+        })
+        .catch((err) => {
+          setError(`Something went wrong!`);
+          setProcessing(false);
+        });
+      return;
+    }
+
     if (props.isPaidModal) {
       const card = elements.getElement(CardElement);
       const { error, source } = await stripe.createSource(card);
@@ -58,12 +77,12 @@ export default function CheckoutForm(props) {
         console.log("[error]", error);
         return;
       }
-      console.log(source);
       axios
-        .post("http://localhost:8000/start_sub", {
+        .post("https://themarketscoop.herokuapp.com/start_sub", {
           source: source.id,
           name,
           phone,
+          email,
         })
         .then((response) => {
           setError(null);
@@ -75,9 +94,11 @@ export default function CheckoutForm(props) {
         });
     } else {
       axios
-        .post("http://localhost:8000/free_sign_up", {
+        .post("http://localhost:80/free_sign_up", {
           name,
+          email,
           phone,
+          promoCode,
         })
         .then((response) => {
           setError(null);
@@ -88,25 +109,17 @@ export default function CheckoutForm(props) {
           setProcessing(false);
         });
     }
-
-    // if (payload.error) {
-    //   setError(`Payment failed: ${payload.error.message}`);
-    //   setProcessing(false);
-    //   console.log("[error]", payload.error);
-    // } else {
-    //   setError(null);
-    //   setSucceeded(true);
-    //   setProcessing(false);
-    //   setMetadata(payload.paymentIntent);
-    //   console.log("[PaymentIntent]", payload.paymentIntent);
-    // }
   };
+  React.useEffect(() => {
+    setEmail("");
+    setPhone("");
+  }, [messageType]);
 
   const renderSuccess = () => {
     return (
       <div className="sr-field-success message">
         <h1 style={{ textAlign: "center", marginTop: 50 }}>
-          Your signup succeeded!
+          {props.isCancel ? "Canceled plan" : "Your signup succeeded!"}
         </h1>
       </div>
     );
@@ -130,42 +143,144 @@ export default function CheckoutForm(props) {
         },
       },
     };
+    const getButtonText = () => {
+      if (props.isCancel) {
+        return "Cancel my plan";
+      }
+      return props.isPaidModal ? "Pay" : "Sign Up";
+    };
 
     return (
       <form onSubmit={handleSubmit}>
-        <h1>Join the Scoop!</h1>
-
+        <h1>{!props.isCancel ? "Join the Scoop!" : "My account"}</h1>
+        <div>
+          <input
+            type="radio"
+            id="sendType"
+            name="sendType"
+            value="email"
+            onChange={(e) => setMessageType("email")}
+          />
+          <label for="interest">Send me emails</label>
+          <input
+            type="radio"
+            defaultChecked
+            id="sendType"
+            name="sendType"
+            value="texts"
+            onChange={(e) => setMessageType("text")}
+          />
+          <label for="interest">Send me texts</label>
+        </div>
         <div className="sr-combo-inputs">
           <div className="sr-combo-inputs-row">
             <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="Phone Number"
-              autoComplete="phone"
+              type={messageType === "text" ? "tel" : "email"}
+              id={messageType === "text" ? "phone" : "email"}
+              name={messageType === "text" ? "phone" : "email"}
+              placeholder={
+                messageType === "text" ? "Phone number" : "joe@smith.com"
+              }
+              value={messageType === "text" ? phone : email}
+              // autoComplete="phone"
               className="sr-input"
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) =>
+                messageType === "text"
+                  ? setPhone(e.target.value)
+                  : setEmail(e.target.value)
+              }
             />
           </div>
-          <div className="sr-combo-inputs-row">
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Name"
-              autoComplete="name"
-              className="sr-input"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
+          {!props.isCancel && (
+            <React.Fragment>
+              <div className="sr-combo-inputs-row">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Name"
+                  autoComplete="name"
+                  className="sr-input"
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+            </React.Fragment>
+          )}
 
-          {props.isPaidModal && (
-            <div className="sr-combo-inputs-row">
-              <CardElement
-                className="sr-input sr-card-element"
-                options={options}
-              />
+          {props.isCancel && (
+            <div className="sr-combo-inputs-row" style={{ marginTop: 20 }}>
+              <ul>
+                <div>
+                  <input type="radio" id="like" name="cancel" value="like" />
+                  <label for="like">I don't like the messages</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="interest"
+                    name="cancel"
+                    value="interest"
+                  />
+                  <label for="interest">
+                    I don’t have an interest in the information anymore
+                  </label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="experience"
+                    name="cancel"
+                    value="experience"
+                  />
+                  <label for="experience">Bad user experience</label>
+                </div>
+                <div>
+                  <input type="radio" id="price" name="cancel" value="price" />
+                  <label for="price">
+                    The service is not sufficient for price paid
+                  </label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="bother"
+                    name="cancel"
+                    value="bother"
+                  />
+                  <label for="bother">The messages bother me</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="expensive"
+                    name="cancel"
+                    value="expensive"
+                  />
+                  <label for="expensive">I don’t like the messages</label>
+                </div>
+              </ul>
             </div>
+          )}
+          {props.isPaidModal && !props.isCancel && (
+            <React.Fragment>
+              <div className="sr-combo-inputs-row">
+                <input
+                  type="text"
+                  id="promo"
+                  name="promo"
+                  placeholder="Promo Code"
+                  autoComplete="promo"
+                  className="sr-input"
+                  onChange={(e) => setPromoCode(e.target.value)}
+                />
+              </div>
+              <div className="sr-combo-inputs-row">
+                <CardElement
+                  className="sr-input sr-card-element"
+                  options={options}
+                />
+              </div>
+            </React.Fragment>
           )}
         </div>
 
@@ -176,7 +291,7 @@ export default function CheckoutForm(props) {
         )}
 
         <button className="btn" disabled={processing || !stripe}>
-          {processing ? "Processing…" : props.isPaidModal ? "Pay" : "Sign Up"}
+          {processing ? "Processing…" : getButtonText()}
         </button>
       </form>
     );

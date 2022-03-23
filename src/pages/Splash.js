@@ -191,6 +191,7 @@ class Splash extends Component {
       scrollPosition: 0,
       modalOpen: false,
       isPaidModal: true,
+      isCancel: false,
     };
     this.topRef = React.createRef();
     this.aboutRef = React.createRef();
@@ -438,6 +439,7 @@ class Splash extends Component {
                         this.setState({
                           modalOpen: true,
                           isPaidModal: plan.title !== "Basic",
+                          isCancel: false
                         })
                       }
                       className={
@@ -483,6 +485,17 @@ class Splash extends Component {
               </ScrollAnimation>
             ))}
           </ul>
+          <button
+            onClick={() =>
+              this.setState({
+                modalOpen: true,
+                isCancel: true
+              })
+            }
+            className={"blue-button"}
+          >
+            Cancel my plan
+          </button>
         </section>
         <section
           className="row-ac"
@@ -539,6 +552,7 @@ class Splash extends Component {
           toggle={() => this.setState({ modalOpen: !this.state.modalOpen })}
           isPaidModal={this.state.isPaidModal}
           isOpen={this.state.modalOpen}
+          isCancel={this.state.isCancel}
         />
       </div>
     );

@@ -11,7 +11,10 @@ export default function Pay(props) {
   return (
     <div>
       <Elements stripe={stripePromise}>
-        <CheckoutForm isPaidModal={props.isPaidModal} />
+        <CheckoutForm
+          isPaidModal={props.isPaidModal}
+          isCancel={props.isCancel}
+        />
       </Elements>
     </div>
   );
