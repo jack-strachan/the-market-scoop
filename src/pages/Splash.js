@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Navbar from "../components/Navbar";
-import phones from "../images/phones 1.png";
+import phones from '../images/phones1.png'
 import SvgTwitter from "../icons/Twitter";
-import { Collapse } from "react-collapse/lib/Collapse";
+import {Collapse} from "react-collapse/lib/Collapse";
 import AnswerCollapse from "../components/AnswerCollapse";
 import SvgFacebook from "../icons/Facebook";
 import logo from "../images/logo.png";
@@ -15,300 +15,112 @@ import "animate.css/animate.min.css";
 import ScrollAnimation from "react-animate-on-scroll";
 import Modal from "../components/Modal";
 import SignUpModal from "../components/Modal";
-
-const NAV_TABS = [
-  {
-    tab: "Home",
-    route: "home",
-  },
-  {
-    tab: "About",
-    route: "about",
-  },
-  {
-    tab: "Plans",
-    route: "plans",
-  },
-  {
-    tab: "Testimonials",
-    route: "testimonials",
-  },
-  {
-    tab: "FAQ",
-    route: "faq",
-  },
-];
-
-const SPLASH_STATS = [
-  {
-    top: "8.6k+",
-    bottom: "Messages Sent",
-  },
-  {
-    top: "3.4k+",
-    bottom: "Members",
-  },
-  {
-    top: "1.2k",
-    bottom: "5 Star Reviews",
-  },
-];
-
-const CARDS_1 = [
-  {
-    title: "Relevant Tips",
-    description:
-      "Receive relevant, insightful tips to help guide smarter investments.",
-  },
-  {
-    title: "Hand Curated",
-    description:
-      "No fluff, all cream. Our team is dedicated to sifting through the junk so you don't have to.",
-  },
-];
-
-const CARDS_2 = [
-  {
-    title: "Member Access",
-    description:
-      "Get exclusive access to the community group chats, open to members 24/7.",
-  },
-  {
-    title: "Money Back Guarantee",
-    description: "Don't enjoy the service? Get 7 days to try it out.",
-  },
-];
-
-const PLANS = [
-  {
-    title: "Basic",
-    price: "Free",
-    term: "",
-    features: [
-      {
-        title: "Access to the Market Scoop group chat",
-        unlocked: true,
-      },
-      {
-        title:
-          "Weekly recap message with top anticipated news on the US Stock Market (upgrades, downgrades, earnings, mergers, announcements and more)",
-        unlocked: true,
-      },
-      {
-        title:
-          "Weekly recap message with key information on the Crypto-Currency market",
-        unlocked: true,
-      },
-    ],
-  },
-  {
-    title: "Preferred",
-    price: "$4.99",
-    term: "/mo",
-    features: [
-      {
-        title:
-          "Daily message with crucial news on the US Stock Market and Crypto Market",
-        unlocked: true,
-      },
-      {
-        title: "Access to the Market Scoop group chat",
-        unlocked: true,
-      },
-      {
-        title:
-          "Weekly recap message with top anticipated news on the US Stock Market (upgrades, downgrades, earnings, mergers, announcements and more)",
-        unlocked: true,
-      },
-      {
-        title:
-          "Weekly recap message with key information on the Crypto-Currency market",
-        unlocked: true,
-      },
-      {
-        title: "Access to members only group chat channels",
-        unlocked: true,
-      },
-      {
-        title: "Catered messaging customized to your needs",
-        unlocked: true,
-      },
-    ],
-  },
-  // {
-  //     title: 'Premium',
-  //     price: '$199',
-  //     term: '/mo',
-  //     features: [
-  //         {
-  //             title: 'Daily messages to any number',
-  //             unlocked: true
-  //         },
-  //         {
-  //             title: 'Catered services customized to your needs',
-  //             unlocked: true
-  //         },
-  //         {
-  //             title: '24/7 contact available',
-  //             unlocked: true
-  //         },
-  //         {
-  //             title: 'Switch numbers as many times as you like',
-  //             unlocked: true
-  //         },
-  //         {
-  //             title: 'Unlock referral rewards',
-  //             unlocked: true
-  //         },
-  //     ]
-  // }
-];
-
-const FAQ = [
-  {
-    q: "How long till I start receiving messages after I sign up?",
-    a: "You will start receiving messages the next trading day.",
-  },
-  {
-    q: "How can I upgrade from my free plan?",
-    a: "Upgrading is easy! Just come back to this site and sign up for the paid plan. Your old number will be migrated upon signup.",
-  },
-  {
-    q: "Do I still need to do my own research?",
-    a: "Of course! This service aims to keep members informed with important news and key insights. Its never a good idea to trade blindly without doing the necessary research.",
-  },
-  {
-    q: "Where can I access the members chat?",
-    a: "Find us here ___.",
-  },
-];
+import Marquee from "react-fast-marquee";
+import SplashTop from "../sections/SplashTop";
+import Features from "../sections/Features";
+import Plans from "../sections/Plans";
+import Testimonials from "../sections/Testimonials";
+import FAQ from "../sections/FAQ";
+import Footer from "../sections/Footer";
+import {NAV_TABS} from "../consts/consts";
+import NavbarMobile from "../components/NavbarMobile";
+import NavMenuMobile from "../components/NavMenuMobile";
 
 class Splash extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeTab: "home",
-      scrollPosition: 0,
-      modalOpen: false,
-      isPaidModal: true,
-      isCancel: false,
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeTab: "home",
+            scrollPosition: 0,
+            modalOpen: false,
+            isPaidModal: true,
+            mobile: false,
+            tablet: false,
+            mobileMenu: false
+        };
+        this.topRef = React.createRef();
+        this.aboutRef = React.createRef();
+        this.plansRef = React.createRef();
+        this.testimonialsRef = React.createRef();
+        this.faqRef = React.createRef();
+    }
+
+    scrollTo = (route) => {
+        if (route === "top") {
+            this.topRef.current.scrollIntoView({behavior: "smooth"});
+        }
+        if (route === "about") {
+            this.aboutRef.current.scrollIntoView({behavior: "smooth"});
+        }
+        if (route === "plans") {
+            this.plansRef.current.scrollIntoView({behavior: "smooth"});
+        }
+        if (route === "testimonials") {
+            this.testimonialsRef.current.scrollIntoView({behavior: "smooth"});
+        }
+        if (route === "faq") {
+            this.faqRef.current.scrollIntoView({behavior: "smooth"});
+        }
     };
-    this.topRef = React.createRef();
-    this.aboutRef = React.createRef();
-    this.plansRef = React.createRef();
-    this.testimonialsRef = React.createRef();
-    this.faqRef = React.createRef();
-  }
 
-  scrollTo = (route) => {
-    if (route === "top") {
-      this.topRef.current.scrollIntoView({ behavior: "smooth" });
+    componentDidMount() {
+        window.addEventListener("scroll", this.listenToScroll);
+        window.addEventListener("resize", this.resize.bind(this));
+        this.resize();
     }
-    if (route === "about") {
-      this.aboutRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-    if (route === "plans") {
-      this.plansRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-    if (route === "testimonials") {
-      this.testimonialsRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-    if (route === "faq") {
-      this.faqRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
-  componentDidMount() {
-    window.addEventListener("scroll", this.listenToScroll);
-  }
+    resize() {
+        this.setState({
+            mobile: window.innerWidth <= 760,
+            tablet: (window.innerWidth >= 660 && window.innerWidth <= 1200)
+        });
+    }
 
-  listenToScroll = () => {
-    const winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
-    const aboutRef = this.aboutRef.current.offsetTop + window.innerHeight;
-    const plansRef = this.plansRef.current.offsetTop + window.innerHeight;
-    const faqRef = this.faqRef.current.offsetTop + window.innerHeight;
-    this.setState({
-      scrollPosition: winScroll,
-      activeTab:
-        winScroll < 100
-          ? "home"
-          : winScroll < aboutRef
-          ? "about"
-          : winScroll < plansRef
-          ? "plans"
-          : "faq",
-    });
-  };
+    listenToScroll = () => {
+        const winScroll =
+            document.body.scrollTop || document.documentElement.scrollTop;
+        const aboutRef = this.aboutRef.current.offsetTop + window.innerHeight;
+        const plansRef = this.plansRef.current.offsetTop + window.innerHeight;
+        const faqRef = this.faqRef.current.offsetTop + window.innerHeight;
+        this.setState({
+            scrollPosition: winScroll,
+            activeTab:
+                winScroll < 100
+                    ? "home"
+                    : winScroll < aboutRef
+                    ? "about"
+                    : winScroll < plansRef
+                        ? "plans"
+                        : "faq",
+        });
+    };
 
-  render() {
-    return (
-      <div style={{ height: "300vh" }}>
-        <Navbar
-          scrollTo={this.scrollTo}
-          activeTab={this.state.activeTab}
-          tabs={NAV_TABS}
-          scrollPosition={this.state.scrollPosition}
-        />
-        <div className="relative" ref={this.topRef}>
-          <div className="gradient-bg2" />
-          <section
-            className="col-ac-jc text-center"
-            style={{ padding: "10% 25% 0% 25%" }}
-          >
-            <h1 className="splash-head mb-16">
-              Tagline about the Market Scoop goes here
-            </h1>
-            <p className="o5">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-              imperdiet orci non sem placerat commodo. Nam dui libero, molestie
-              tempus ligula non, consectetur malesuada magna.
-            </p>
-            <div className="row-ac-jc mt-20">
-              <button
-                onClick={() => this.scrollTo("plans")}
-                className="mr-16 blue-button"
-              >
-                View Plans
-              </button>
-              <button
-                onClick={() => this.scrollTo("plans")}
-                className="ml-16 grey-button"
-              >
-                Start Free
-              </button>
-            </div>
-          </section>
-          <section className="row-ac-jb">
-            <ScrollAnimation animateIn="fadeInUp" delay={150}>
-              <div style={{ paddingLeft: "30%" }}>
-                <h2 className="big-head mb-0">Stay on top of the market</h2>
-                <p className="o5 mt-16 mb-20">
-                  The #1 way to ensure you are an informed investor, keeping up
-                  to date with all the latest news including earnings results on
-                  the largest publicly traded companies, new product and service
-                  launches, analyst upgrades, and management transitions.
-                </p>
-                <div className="row-ac mt-16">
-                  {SPLASH_STATS.map((stat, i) => (
-                    <div className="mr-28">
-                      <div
-                        className="big-stat mb-8"
-                        style={{
-                          color:
-                            i === 0
-                              ? "#FFBE3D"
-                              : i === 1
-                              ? "#367DFF"
-                              : i === 2 && "#43F58B",
-                        }}
-                      >
-                        {stat.top}
-                      </div>
-                      <div>{stat.bottom}</div>
+    render() {
+        return (
+            <div>
+                {this.state.mobile ?
+                    <div className='relative'>
+                        <NavMenuMobile
+                            onClickClose={() => this.setState({mobileMenu: false})}
+                            scrollTo={this.scrollTo}
+                            mobileMenu={this.state.mobileMenu}
+                        />
+                        <NavbarMobile
+                            onClickLogo={() => this.scrollTo('top')}
+                            onClickMenu={() => this.setState({mobileMenu: true})}
+                        />
                     </div>
-                  ))}
+                    :
+                    <Navbar scrollTo={this.scrollTo} activeTab={this.state.activeTab} tabs={NAV_TABS}
+                            scrollPosition={this.state.scrollPosition}/>
+                }
+                <div ref={this.topRef}>
+                    <SplashTop
+                        scrollToPlans={() => this.scrollTo('plans')}
+                        mobile={this.state.mobile}
+                    />
                 </div>
+<<<<<<< HEAD
               </div>
             </ScrollAnimation>
             <img src={phones} className="phones" />
@@ -508,18 +320,31 @@ class Splash extends Component {
                 <div className="row-ac mt-16">
                   <SvgTwitter className="mr-12" />
                   <SvgFacebook />
+=======
+                <div ref={this.aboutRef}>
+                    <Features mobile={this.state.mobile}/>
                 </div>
-                <p style={{ fontSize: 12 }} className="mt-32">
-                  © The Market Scoop 2022
-                </p>
-              </div>
-              <div className="mr-100">
-                <p className="uppercase body2-medium o5">Links</p>
-                <ul>
-                  <li className="body1-emphasized o6 mb-4">Terms of Service</li>
-                  <li className="body1-emphasized o6 mb-4">Privacy Policy</li>
-                </ul>
-              </div>
+                <div ref={this.plansRef}>
+                    <Plans
+                        mobile={this.state.mobile}
+                        openModal={() => this.setState({modalOpen: true})}/>
+                </div>
+                <div ref={this.testimonialsRef}>
+                    <Testimonials
+                        mobile={this.state.mobile}
+                    />
+                </div>
+                <div ref={this.faqRef}>
+                    <FAQ mobile={this.state.mobile}/>
+>>>>>>> 4adc1bbe03e3557091862fc5317f2f660dcba5d6
+                </div>
+                <Footer mobile={this.state.mobile}/>
+                <SignUpModal
+                    toggle={() => this.setState({modalOpen: !this.state.modalOpen})}
+                    isPaidModal={this.state.isPaidModal}
+                    isOpen={this.state.modalOpen}
+                    mobile={this.state.mobile}
+                />
             </div>
             <p className="body3-medium mt-32" style={{ color: "#FFFFFF50" }}>
               With investment, your capital is at risk. The value of your

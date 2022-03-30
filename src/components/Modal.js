@@ -1,9 +1,10 @@
-import { motion } from "framer-motion";
-import React, { Component } from "react";
+import {motion} from "framer-motion";
+import React, {Component} from "react";
 import Modal from "react-modal";
 import Pay from "./Pay";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+import {Elements} from "@stripe/react-stripe-js";
+import {loadStripe} from "@stripe/stripe-js";
+import SvgClose from "../icons/Close";
 
 class SignUpModal extends Component {
   render() {
