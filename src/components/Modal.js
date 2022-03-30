@@ -22,7 +22,7 @@ class SignUpModal extends Component {
           animate={{ opacity: 1, transform: "scale(1) translateY(-0%)" }}
           className="modal-body relative"
           style={{
-            height: 450,
+            minHeight: 450,
             width: 400,
             backgroundColor: "#2a2a2a",
             boxShadow: "1px 3px 1px #9E9E9E",

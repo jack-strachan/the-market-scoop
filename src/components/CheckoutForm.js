@@ -11,6 +11,7 @@ export default function CheckoutForm(props) {
   const [promoCode, setPromoCode] = useState("");
   const [error, setError] = useState(null);
   const [metadata, setMetadata] = useState(null);
+  const [showOtherField, setShowOtherField] = useState(false);
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [messageType, setMessageType] = useState("text");
@@ -211,15 +212,12 @@ export default function CheckoutForm(props) {
             <div className="sr-combo-inputs-row" style={{ marginTop: 20 }}>
               <ul>
                 <div>
-                  <input type="radio" id="like" name="cancel" value="like" />
-                  <label for="like">I don't like the messages</label>
-                </div>
-                <div>
                   <input
                     type="radio"
                     id="interest"
                     name="cancel"
                     value="interest"
+                    onClick={() => setShowOtherField(false)}
                   />
                   <label for="interest">
                     I don’t have an interest in the information anymore
@@ -231,11 +229,18 @@ export default function CheckoutForm(props) {
                     id="experience"
                     name="cancel"
                     value="experience"
+                    onClick={() => setShowOtherField(false)}
                   />
                   <label for="experience">Bad user experience</label>
                 </div>
                 <div>
-                  <input type="radio" id="price" name="cancel" value="price" />
+                  <input
+                    type="radio"
+                    id="price"
+                    name="cancel"
+                    value="price"
+                    onClick={() => setShowOtherField(false)}
+                  />
                   <label for="price">
                     The service is not sufficient for price paid
                   </label>
@@ -243,11 +248,12 @@ export default function CheckoutForm(props) {
                 <div>
                   <input
                     type="radio"
-                    id="bother"
+                    id="diff"
                     name="cancel"
-                    value="bother"
+                    value="diff"
+                    onClick={() => setShowOtherField(false)}
                   />
-                  <label for="bother">The messages bother me</label>
+                  <label for="diff">Expected something different</label>
                 </div>
                 <div>
                   <input
@@ -255,8 +261,28 @@ export default function CheckoutForm(props) {
                     id="expensive"
                     name="cancel"
                     value="expensive"
+                    onClick={() => setShowOtherField(false)}
                   />
                   <label for="expensive">I don’t like the messages</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="other"
+                    name="cancel"
+                    value="other"
+                    onClick={() => setShowOtherField(true)}
+                  />
+                  <label for="other">Other</label>
+                  {showOtherField && (
+                    <input
+                      type="text"
+                      id="other_text"
+                      name="other_text"
+                      value=""
+                      placeholder="Reason..."
+                    />
+                  )}
                 </div>
               </ul>
             </div>
