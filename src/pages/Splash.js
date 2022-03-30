@@ -36,7 +36,8 @@ class Splash extends Component {
             isPaidModal: true,
             mobile: false,
             tablet: false,
-            mobileMenu: false
+            mobileMenu: false,
+            isCancel: false,
         };
         this.topRef = React.createRef();
         this.aboutRef = React.createRef();
@@ -126,7 +127,7 @@ class Splash extends Component {
                 <div ref={this.plansRef}>
                     <Plans
                         mobile={this.state.mobile}
-                        openModal={() => this.setState({modalOpen: true})}/>
+                        openModal={(isPaidModal=false) => this.setState({modalOpen: true, isPaidModal})}/>
                 </div>
                 <div ref={this.testimonialsRef}>
                     <Testimonials
@@ -142,6 +143,7 @@ class Splash extends Component {
                     isPaidModal={this.state.isPaidModal}
                     isOpen={this.state.modalOpen}
                     mobile={this.state.mobile}
+                    isCancel={this.state.isCancel}
                 />
             </div>
         )
