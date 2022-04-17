@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import ScrollAnimation from "react-animate-on-scroll";
-import phones from "../images/phones1.png";
+import phones from "../images/phones2.png";
 import {SPLASH_STATS} from "../consts/consts";
 
 
