@@ -32,8 +32,8 @@ export const CARDS = [
         iconMobile: <SvgTarget height={40} width={40} className='mb-8' style={{color: '#FFBE3D'}}/>,
     },
     {
-        title: 'Member Access',
-        description: 'Get exclusive access to the community group chats, open to members 24/7.',
+        title: 'Giveaways',
+        description: 'Chance to win cash prizes upon becoming a member.',
         icon: <SvgLock height={80} width={80} className='mb-20' style={{color: '#F54379'}}/>,
         iconMobile: <SvgLock height={40} width={40} className='mb-8' style={{color: '#F54379'}}/>,
     },
@@ -79,6 +79,10 @@ export const PLANS = [
                 title: 'Access to monthly giveaways hosted for preferred members including stock imbursements, cash, and gift-cards to the biggest brands.',
                 unlocked: true
             },
+            {
+                title: 'Access to our trending sector and The Scoops ‘Buy of The Week’.',
+                unlocked: true
+            }
         ]
     }
 ]
@@ -99,7 +103,7 @@ export const TESTIMONIALS = [
     {
         review: '"Out of all my monthly charges, I don’t feel bad about my $5 to the market scoop. I would even pay more for this service."',
         user: 'Derek V.',
-        location: 'Paris, France',
+        location: 'Charlotte, NC',
         border: 'linear-gradient(to left, #F25E2280, #FEB00080)'
     },
     {
@@ -122,7 +126,20 @@ export const TESTIMONIALS = [
     },
     {
         review: '"I signed up for the free version, and after getting my second message, I realized I wanted these daily. It’s a nice change that focuses more on individual company alerts which is what I like."',
-        user: 'Miami, FL',
+        location: 'Miami, FL',
+        user: 'Andrew C.',
+        border: 'linear-gradient(to left, #E661C980, #FB927F80)'
+    },
+    {
+        review: '"I love getting the messages, quick read right to my texts, and I’m informed for the week ahead, and kept up to date day to day."',
+        location: 'Framingham, MA',
+        user: 'Ted G.',
+        border: 'linear-gradient(to left, #E661C980, #FB927F80)'
+    },
+    {
+        review: '"I don’t know if I ever left a review, but I won a giveaway a week after signing up, and got $250. So here I am. :) Life-time subscriber here! Love the service"',
+        location: 'Shelbyville, TN',
+        user: 'Jennifer D.',
         border: 'linear-gradient(to left, #E661C980, #FB927F80)'
     },
 ]
@@ -141,8 +158,8 @@ export const FAQs = [
         a: "Of course! This service aims to keep members informed with important news and key insights. Its never a good idea to trade blindly without doing the necessary research.",
     },
     {
-        q: "Where can I access the members chat?",
-        a: "Find us here ___.",
+        q: "How do I enter in The Market Scoop giveaways?",
+        a: "You already are! By becoming a preferred member, you are automatically entered into our giveaways.",
     },
 ];
 
