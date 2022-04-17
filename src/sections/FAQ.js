@@ -12,7 +12,7 @@ class FAQ extends Component {
                         FAQs
                     </h1>
                     <p className='o5 mb-64' style={{fontSize:this.props.mobile && 14, margin:this.props.mobile && '0px 28px 0px 28px'}}>
-                        Dont see your answer here? Contact us at _______ with any other questions! We're more than
+                        Dont see your answer here? Contact us at <span style={{color:'#36ABFF', fontWeight:500}}>contact@themarketscoop.io</span> with any other questions! We're more than
                         happy to help.
                     </p>
                 </div>

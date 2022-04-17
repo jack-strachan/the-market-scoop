@@ -5,7 +5,7 @@
 }
 
 .splash-head {
-    font-size: 84px;
+    font-size: 76px;
     font-weight: 700 !important;
 }
 
@@ -28,6 +28,7 @@
     font-size: 24px;
     font-weight: 700 !important;
 }
+
 .flex-wrap {
     flex-wrap: wrap;
 }
@@ -137,4 +138,10 @@
 
 .o5 {
     opacity: .5;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+    grid-gap: 0 16px;
 }

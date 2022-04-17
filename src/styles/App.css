@@ -8,7 +8,7 @@ body {
     background-color: var(--bodyColor);
     color: var(--white);
     font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
 .blue-button {
@@ -151,13 +151,11 @@ li {
     background-color: #FFFFFF10;
     border-radius: var(--space16);
     padding: var(--space32);
-    margin: var(--space20);
     box-shadow: 0 0 8px #00000020;
     transition: 150ms ease;
     display: flex;
     flex-direction: column;
-    flex: 1;
-    min-height: 250px;
+    height: 100%;
 }
 
 .splash-card:hover {
@@ -166,7 +164,7 @@ li {
 }
 
 .phones {
-    transform: scaleX(-1);
+    /*transform: scaleX(-1);*/
 }
 
 .plan-card {
