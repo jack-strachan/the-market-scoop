@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import ScrollAnimation from "react-animate-on-scroll";
-import phones from "../images/phones3.png";
+import phones from "../images/phones4.png";
 import {SPLASH_STATS} from "../consts/consts";
 
 
@@ -84,8 +84,8 @@ class SplashTop extends Component {
                     </div>
                 </section>
                 <section className={this.props.mobile ? 'col-ac-jc ph-60 mt-0' : 'row-ac-jb'}>
-                    <div className='relative'>
-                        <img src={phones} className='phones' style={{maxWidth:'40vw'}}/>
+                    <div className='relative pt-64'>
+                        <img src={phones} className='phones pt-100' style={{maxWidth:'35vw'}}/>
                     </div>
                 </section>
             </div>
