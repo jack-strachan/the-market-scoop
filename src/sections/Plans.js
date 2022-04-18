@@ -142,9 +142,9 @@ class Plans extends Component {
                   </div>
                   <div className="mt-32">
                     <button
-                      onClick={() =>
-                        this.props.openModal(plan.title === "Become a Member")
-                      }
+                      onClick={() => {
+                        this.props.openModal(false, plan.title === "Preferred");
+                      }}
                       className={
                         plan.title === "Basic" ? "grey-button" : "blue-button"
                       }

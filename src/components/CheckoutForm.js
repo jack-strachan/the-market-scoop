@@ -57,6 +57,7 @@ export default function CheckoutForm(props) {
         .then((response) => {
           setError(null);
           setSucceeded(true);
+          setProcessing(false);
         })
         .catch((err) => {
           setError(`Something went wrong!`);
@@ -130,6 +131,7 @@ export default function CheckoutForm(props) {
     }
     return props.isPaidModal ? "Pay" : "Sign Up";
   };
+
   const options = {
     style: {
       base: {
@@ -160,7 +162,9 @@ export default function CheckoutForm(props) {
             value={messageType === "email"}
             onChange={(e) => setMessageType("email")}
           />
-          <label for="interest">Send me emails</label>
+          <label for="interest">
+            {props.isCancel ? "I signed up with email" : "Send me emails"}
+          </label>
           <input
             type="radio"
             defaultChecked
@@ -169,7 +173,9 @@ export default function CheckoutForm(props) {
             value={messageType === "text"}
             onChange={(e) => setMessageType("text")}
           />
-          <label for="interest">Send me texts</label>
+          <label for="interest">
+            {props.isCancel ? "I signed up with phone" : "Send me texts"}
+          </label>
         </div>
         <div className="sr-combo-inputs">
           <div className="sr-combo-inputs-row">
