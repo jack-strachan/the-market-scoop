@@ -21,7 +21,7 @@ class SplashTop extends Component {
                             One Message,<br/> Per Day.
                         </h1>
                         <div className='mr-80'>
-                            <p className='o5 mt-16 mb-20' style={{fontSize: this.props.mobile ? 14 : 20}}>
+                            <p className='o5 mt-32 mb-8 uppercase' style={{fontSize: this.props.mobile ? 12 : 14, fontWeight:'bold'}}>
                                 Giving you the latest market updates, trending sectors, key events, and much more.
                             </p>
                             <p className='o5 mt-16 mb-20' style={{fontSize: this.props.mobile && 14}}>
