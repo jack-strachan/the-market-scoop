@@ -98,7 +98,7 @@ class Splash extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{width:'100%', overflowX:'hidden'}}>
         {this.state.mobile ? (
           <div className="relative">
             <NavMenuMobile
