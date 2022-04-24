@@ -2,6 +2,7 @@ import SvgZap from "../icons/Zap";
 import SvgTarget from "../icons/Target";
 import SvgLock from "../icons/Lock";
 import SvgSmile from "../icons/Smile";
+import SvgPresent from "../icons/Present";
 
 export const SPLASH_STATS = [
     {
@@ -34,8 +35,8 @@ export const CARDS = [
     {
         title: 'Giveaways',
         description: 'Chance to win cash prizes upon becoming a member.',
-        icon: <SvgLock height={80} width={80} className='mb-20' style={{color: '#F54379'}}/>,
-        iconMobile: <SvgLock height={40} width={40} className='mb-8' style={{color: '#F54379'}}/>,
+        icon: <SvgPresent height={80} width={80} className='mb-20' style={{color: '#F54379'}}/>,
+        iconMobile: <SvgPresent height={40} width={40} className='mb-8' style={{color: '#F54379'}}/>,
     },
     {
         title: 'Money Back Guarantee',
