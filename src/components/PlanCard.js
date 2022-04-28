@@ -51,7 +51,7 @@ class PlanCard extends Component {
         <div className="mt-32">
           <button
             onClick={() => {
-              this.props.openModal(false, plan.title === "Become a Member");
+              this.props.openModal(false, plan.title === "Preferred");
             }}
             className={plan.title === "Basic" ? "grey-button" : "blue-button"}
           >

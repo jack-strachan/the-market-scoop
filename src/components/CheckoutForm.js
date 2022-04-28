@@ -80,6 +80,7 @@ export default function CheckoutForm(props) {
         .post("https://themarketscoop.herokuapp.com/start_sub", {
           source: source.id,
           name,
+          messageType,
           phone,
           email,
         })
@@ -96,6 +97,7 @@ export default function CheckoutForm(props) {
       axios
         .post("https://themarketscoop.herokuapp.com/free_sign_up", {
           name,
+          messageType,
           email,
           phone,
           promoCode,
@@ -180,22 +182,31 @@ export default function CheckoutForm(props) {
         <div className="sr-combo-inputs">
           <div className="sr-combo-inputs-row">
             <input
-              type={messageType === "text" ? "tel" : "email"}
-              id={messageType === "text" ? "phone" : "email"}
-              name={messageType === "text" ? "phone" : "email"}
-              placeholder={
-                messageType === "text" ? "Phone number" : "joe@smith.com"
-              }
-              value={messageType === "text" ? phone : email}
-              // autoComplete="phone"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="joe@smith.com"
+              value={email}
               className="sr-input"
-              onChange={(e) =>
-                messageType === "text"
-                  ? setPhone(e.target.value)
-                  : setEmail(e.target.value)
+              onChange={(e) => setEmail(e.target.value)
               }
             />
+
           </div>
+          <div className="sr-combo-inputs-row">
+            <input
+              type='tel'
+              id='phone'
+              name='phone'
+              placeholder='Phone number'
+              value={phone}
+              className="sr-input"
+              onChange={(e) => setPhone(e.target.value)
+              }
+            />
+
+          </div>
+
           {!props.isCancel && (
             <React.Fragment>
               <div className="sr-combo-inputs-row">
