@@ -1,9 +1,9 @@
-import {motion} from "framer-motion";
-import React, {Component} from "react";
+import { motion } from "framer-motion";
+import React, { Component } from "react";
 import Modal from "react-modal";
 import Pay from "./Pay";
-import {Elements} from "@stripe/react-stripe-js";
-import {loadStripe} from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import SvgClose from "../icons/Close";
 
 class SignUpModal extends Component {
@@ -19,11 +19,14 @@ class SignUpModal extends Component {
         overlayClassName="Overlay"
       >
         <motion.div
-          initial={{ opacity: 0, transform: "scale(1) translateY(-100%)" }}
-          animate={{ opacity: 1, transform: "scale(1) translateY(-0%)" }}
+          // initial={{ opacity: 0, transform: "scale(1) translateY(-100%)" }}
+          // animate={{ opacity: 1, transform: "scale(1) translateY(-0%)" }}
           className="modal-body relative"
           style={{
             minHeight: 450,
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
             width: 400,
             backgroundColor: "#2a2a2a",
             boxShadow: "1px 3px 1px #9E9E9E",
