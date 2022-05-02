@@ -60,7 +60,10 @@ export const PLANS = [
                 title: 'A preview of the week ahead, including earnings, important federal reserve meetings, and breaking news about individual companies.',
                 unlocked: true
             },
-
+            {
+                title: 'Receive promotional offers and discounts for other market related platforms',
+                unlocked: true
+            },
         ]
     },
     {
