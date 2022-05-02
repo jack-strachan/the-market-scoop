@@ -137,7 +137,7 @@ export default function CheckoutForm(props) {
   const options = {
     style: {
       base: {
-        color: "#32325d",
+        color: "white",
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
         fontSmoothing: "antialiased",
         fontSize: "16px",

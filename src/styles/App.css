@@ -345,3 +345,7 @@ li {
     position: relative;
     z-index: 999;
 }
+
+.InputElement {
+    color: white;
+}
