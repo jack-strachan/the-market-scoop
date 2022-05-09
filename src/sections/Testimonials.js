@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Marquee from "react-fast-marquee";
-import {TESTIMONIALS} from "../consts/consts";
+import {TESTIMONIALS, TESTIMONIALS2} from "../consts/consts";
 import TestimonialCard from "../components/TestimonialCard";
 
 class Testimonials extends Component {
@@ -24,7 +24,7 @@ class Testimonials extends Component {
                         )}
                     </Marquee>
                     <Marquee gradientColor={[18, 20, 29]} pauseOnHover direction={'right'} style={{marginTop: 40}}>
-                        {TESTIMONIALS.map(testimonial =>
+                        {TESTIMONIALS2.map(testimonial =>
                             <TestimonialCard testimonial={testimonial} mobile={this.props.mobile}/>
                         )}
                     </Marquee>

@@ -148,6 +148,63 @@ export const TESTIMONIALS = [
     },
 ]
 
+export const TESTIMONIALS2 = [
+    {
+        review: '"While I know this doesn’t give financial advice, I have actually taken trades because of this. You usually hear about those big runners midway or towards the end of the day, but I’ve caught a couple in the morning because of this service. Thanks."',
+        user: 'Zack K.',
+        location: 'Sacramento, CA',
+        border: 'linear-gradient(to left, #38A6EC80, #2BF3E380)'
+    },
+    {
+        review: '"So simple yet so effective, thank you! I am a stay at home wife who has shown some interest in the market since the pandemic, my husband is so impressed when IM the one telling HIM about some of the stuff I read here in the morning! Thank you."',
+        user: 'Paul D.',
+        location: 'San Francisco, CA',
+        border: 'linear-gradient(to left, #F25E2280, #FEB00080)'
+    },
+    {
+        review: '"I am the most informed friend in my group. I am always the one to break the news on big moves thanks to the market scoop."',
+        user: 'John S.',
+        location: 'Chicago, IL',
+        border: 'linear-gradient(to left, #B31A3280, #FD3D4280)'
+    },
+    {
+        review: '"I love getting the messages, quick read right to my texts, and I’m informed for the week ahead, and kept up to date day to day."',
+        location: 'Framingham, MA',
+        user: 'Ted G.',
+        border: 'linear-gradient(to left, #E661C980, #FB927F80)'
+    },
+    {
+        review: '"I don’t know if I ever left a review, but I won a giveaway a week after signing up, and got $250. So here I am. :) Life-time subscriber here! Love the service"',
+        location: 'Shelbyville, TN',
+        user: 'Jennifer D.',
+        border: 'linear-gradient(to left, #E661C980, #FB927F80)'
+    },
+    {
+        review: '"I signed up for the free version, and after getting my second message, I realized I wanted these daily. It’s a nice change that focuses more on individual company alerts which is what I like."',
+        location: 'Miami, FL',
+        user: 'Andrew C.',
+        border: 'linear-gradient(to left, #E661C980, #FB927F80)'
+    },
+    {
+        review: '"Out of all my monthly charges, I don’t feel bad about my $5 to the market scoop. I would even pay more for this service."',
+        user: 'Derek V.',
+        location: 'Charlotte, NC',
+        border: 'linear-gradient(to left, #F25E2280, #FEB00080)'
+    },
+    {
+        review: '"I am subscribed to some email watchlists and what not, but I just don’t find myself reading. Something about ‘one text message a day’ makes me swipe on the notification and read it. It’s so simple yet effective."',
+        user: 'Sarah P.',
+        location: 'Houston, TX',
+        border: 'linear-gradient(to left, #2FEA9B80, #7FDD5380)'
+    },
+    {
+        review: '"It makes for great conversation at work. I always have something to talk about with co-workers after getting the message."',
+        user: 'Tony D.',
+        location: 'Oakland, CA',
+        border: 'linear-gradient(to left, #4CD8CF80, #39D06C80)'
+    },
+]
+
 export const FAQs = [
     {
         q: "How long till I start receiving messages after I sign up?",
