@@ -16,29 +16,22 @@ export default function CheckoutForm(props) {
   const [processing, setProcessing] = useState(false);
   const [messageType, setMessageType] = useState("text");
   const [email, setEmail] = useState("");
+  const [fetchedCoupon, setFetchedCoupon] = useState("")
   const stripe = useStripe();
   const elements = useElements();
 
   console.log("isPaid: ", props.isPaidModal);
   useEffect(() => {
-    // Step 1: Fetch product details such as amount and currency from
-    // API to make sure it can't be tampered with in the client.
-    // api.getProductDetails().then(productDetails => {
-    //   setAmount(productDetails.amount / 100);
-    //   setCurrency(productDetails.currency);
-    // });
-    // Step 2: Create PaymentIntent over Stripe API
-    // api
-    //   .createPaymentIntent({
-    //     payment_method_types: ["card"]
-    //   })
-    //   .then(clientSecret => {
-    //     setClientSecret(clientSecret);
-    //   })
-    //   .catch(err => {
-    //     setError(err.message);
-    //   });
   }, []);
+
+  useEffect(() => {
+    axios.get(`https://themarketscoop.herokuapp.com/check_promo?code=${promoCode}`).then((res) => {
+      setFetchedCoupon(res.data)
+    }).catch(err => {
+      setFetchedCoupon("")
+    })
+  }, [promoCode])
+
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
@@ -143,6 +136,9 @@ export default function CheckoutForm(props) {
         fontSize: "16px",
         "::placeholder": {
           color: "#aab7c4",
+        },
+        ':-webkit-autofill': {
+          color: 'white',
         },
       },
       invalid: {
@@ -315,6 +311,11 @@ export default function CheckoutForm(props) {
                   onChange={(e) => setPromoCode(e.target.value)}
                 />
               </div>
+              {fetchedCoupon &&
+                <div className="sr-combo-inputs-row">
+                  <p style={{ textAlign: "center", width: "100%" }}>Coupon: {fetchedCoupon}</p>
+                </div>
+              }
               <div className="sr-combo-inputs-row">
                 <CardElement
                   className="sr-input sr-card-element"
