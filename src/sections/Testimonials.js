@@ -13,7 +13,8 @@ class Testimonials extends Component {
                             See what the people{this.props.mobile && <br/>} are saying
                         </h1>
                         <div className='title-underline'/>
-                        <p className='o5 mt-32 mb-20' style={{fontSize: this.props.mobile && 14}}>
+                        <p className='o5 mt-32 mb-20'
+                           style={{fontSize: this.props.mobile && 14, width: this.props.mobile && '40%'}}>
                             Used by finance professionals, top traders, and retail investors alike. Hear what some of
                             our customers have to say.
                         </p>

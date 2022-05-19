@@ -126,11 +126,13 @@ class Splash extends Component {
                         mobile={this.state.mobile}
                     />
                 </div>
-               <div className='row-ac-jc mt-60' style={{marginBottom:-30}}>
-                   <div style={{opacity:.7, fontSize:28, fontWeight:600}}>
-                       Sign up today and get your first week free!
-                   </div>
-               </div>
+                {!this.state.mobile &&
+                <div className='row-ac-jc mt-60' style={{marginBottom: -30}}>
+                    <div style={{opacity: .7, fontSize: 28, fontWeight: 600}}>
+                        Sign up today and get your first week free!
+                    </div>
+                </div>
+                }
                 <div ref={this.aboutRef}>
                     <Features mobile={this.state.mobile}/>
                 </div>

@@ -6,7 +6,7 @@ import {FAQs} from "../consts/consts";
 class FAQ extends Component {
     render() {
         return (
-            <section className='col-ac-jc'>
+            <section className='col-ac-jc' style={{padding:this.props.mobile && '0 16px'}}>
                 <div className='text-center'>
                     <h1 className='big-head mb-0' style={{fontSize: this.props.mobile && 32}}>
                         FAQs

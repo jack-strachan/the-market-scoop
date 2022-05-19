@@ -6,11 +6,16 @@ class Features extends Component {
     render() {
         return (
             <>
-                        {this.props.mobile &&
+                {this.props.mobile &&
                 <section
                     style={{backgroundColor: '#1E2029', padding: this.props.mobile ? '5% 0% 5% 0%' : '5% 15% 5% 15%'}}
                     className='row-ac-jc'>
                     <div>
+                        <div className='col-ac-jc text-center mt-24'>
+                            <div className='w-70p'  style={{opacity: .7, fontSize: 20, fontWeight: 600, marginBottom:-40}}>
+                                Sign up today and get your first week free!
+                            </div>
+                        </div>
                         <>
                             <ScrollAnimation animateIn="fadeInUp" delay={150}>
                                 <div style={{
@@ -54,15 +59,16 @@ class Features extends Component {
                         </>
                     </div>
                 </section>
-                        }
-                <div className={this.props.mobile ? 'flex-wrap row-ac mv-60 mt-40' : 'feature-grid'} style={{padding:'5% 10% 10% 10%'}}>
+                }
+                <div className={this.props.mobile ? 'flex-wrap row-ac mv-60 mt-40' : 'feature-grid'}
+                     style={{padding: '5% 10% 10% 10%'}}>
                     {CARDS.map((card, i) =>
                         <ScrollAnimation animateIn="fadeInUp"
                                          delay={i === 0 ? 50 : i === 1 ? 100 : i === 2 ? 150 : 200}
                                          style={{flex: !this.props.mobile && 1, height: '100%'}} duration={2}>
                             <div className='splash-card' style={{
                                 minHeight: this.props.mobile && 'min-content',
-                                marginBottom:this.props.mobile && 20
+                                marginBottom: this.props.mobile && 20
                             }}>
                                 {this.props.mobile ? card.iconMobile : card.icon}
                                 <div className='headline mb-8' style={{fontSize: this.props.mobile && 24}}>
